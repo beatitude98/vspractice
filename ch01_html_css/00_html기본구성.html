@@ -1,23 +1,43 @@
+
+
+<!-- html에서의 주석 단축키 ctrl + / -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 메타정보 초기설정정보
+    문자 인코딩 타입 지정
+    -->
     <meta charset="UTF-8">
+    <!-- 기기 화면 사이즈에 비율을 맞추라는 의미  -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>My way</title>
+    <!-- 페이지명 북마크시 들어가는 제목 -->
+    <!-- 파비콘용 링크태그는 head 태그내에 있어야 동작 -->
+    <link rel="shortcut icon" href="../resources/images/favicon-32x32.png">
+
+    <!-- 스타일 태그 안에서는 css 코드 작성 -->
     <style>
+        /* css 주석 */
+        /* css는 body 태그 내 html 요소들을 꾸며주는 역할 */
         .text-title{
             background-color: blueviolet;
             color: aliceblue;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <!-- html요소들 작성 -->
     <h1 class="text-title"> 난 나의 길을 걷는다. -은식</h1>
     <input type="button" value="추천" onclick="f_click()">
 
+    <!-- script 태그 내에는 javascript 코드 작성e -->
     <script>
         function f_click() {
-            alert("돈 벌고 싶다.")
+            alert("추천 완료.")
         }
 
     </script>
