@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본선택자</title>
+
+    <style>
+        /*  *은 모든 태그를 선택 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .cl-title{
+            background-color: yellow;
+        }
+
+        /* #아이디명 으로 해당 아이디를 가지는 태그 선택 가능 */
+        #container{
+
+            height: 200px;
+            background-color: antiquewhite;
+
+        }
+
+        선택자 > div :선택자의 자식에 해당하는 div 태그 선택
+        #container > div{
+            height: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>제목</h1>
+    <p>서브제목</p>
+
+    <div id="container">
+
+        
+    </div>
+</body>
+</html>
