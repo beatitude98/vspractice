@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+
+            border-width: 1px;
+            border-style: solid;
+            border-color: black;
+
+            /* border-top: 2px dashed red; */
+        }
+
+        .shadow{
+            /* 해당 태그에 그림자 추가
+            그림자의 가로 위치
+            그림자의 세로 위치   -값 적용도 가능 ex -20px
+            그림자의 번짐 정도
+            그림자의 크기 */
+            box-shadow: 2px 2px 2px 2px gray;
+            border: 0;
+            /* 테두리 없애서 예뻐보임 */
+
+        }
+
+        .radius{
+            border-radius: 10px;
+        }
+
+        .profile{
+            /* border-radius를 width와 height의 절반만큼 주게되면
+            모양이 공모양으로 완성이 된다. */
+            border-radius: 50px;
+
+            /* div 태그에 이미지 넣기
+            이미지 비율이나 위치조정 등 컨트롤이 어려운편 */
+            background-image: url("data:image/jpeg;base64,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");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .triangle{
+            width: 0;
+            height: 0;
+
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid red;
+            border-left: 30px solid rgba(0,0,0,0);
+            border-right: 30px solid #ffffff00;
+        }
+    </style>
+
+    <div></div>
+    <div class="shadow"> </div>
+    <div class="radius"> </div>
+    <div class="profile"> </div>
+    <div class="triangle"> </div>
+
+
+</head>
+<body>
+    
+
+
+
+
+</body>
+</html>
