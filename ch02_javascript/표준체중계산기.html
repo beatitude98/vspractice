@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>표준 체중 계산기</title>
+
+    <style>
+        div {
+            border-radius: 10px;
+            border: 1px solid aqua;
+            margin: auto;
+        }
+
+        .container {
+            text-align: ;
+            box-shadow: 1px 1px 10px 3px blue;
+        }
+
+        .btn {
+            background-color: blue;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            filter: brightness(90%);
+        }
+
+        .TW {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>표준 체중 계산기</h1>
+        </div>
+        <div class="TW">
+            <div class="tall">
+                <div> 키(cm)</div>
+                <div><input id="tall" type="number"></div>
+            </div>
+            <div class="weight">
+                <div>체중(kg)</div>
+                <div><input id="weight" type="number"></div>
+            </div>
+        </div>
+        <div>
+            남성<input type="radio" name="gender" value="male" checked>
+            여성<input type="radio" name="gender" value="female">
+        </div>
+        <div class="btn" onclick="calc()">
+            계산하기
+        </div>
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        const v_gender = document.getElementsByName("gender");
+        const v_tall = document.getElementById("tall");
+        const v_weight = document.getElementById("weight");
+        const v_result = document.getElementById("result");
+
+        function calc() {
+            const standardWeight = getStandardWeight();
+            const obesity = getObesity(standardWeight);
+            
+            v_result.textContent = `적합한 표준 체중은 ${standardWeight.toFixed(2)}kg 이며, 현재 비만도는 ${obesity} 입니다`;
+            
+        
+        }
+
+        if (v_weight == "" || v_tall =="") {
+                v_result.textContent = '입력된게 아무것도 없습니다';
+            } 
+
+        function getStandardWeight() {
+            let checkedGender;
+            for(let i = 0; i < v_gender.length; i++) {
+                if(v_gender[i].checked) {
+                    checkedGender = v_gender[i].value;
+                    break;
+                }
+            }
+
+            let num;
+            if(checkedGender === 'male') {
+                num = 22;
+            } else if(checkedGender === 'female') {
+                num = 21;
+            }
+
+            const tall = v_tall.value;
+            let standardWeight = tall * tall * num;
+            standardWeight = standardWeight * 0.0001;
+
+            return standardWeight;
+        }
+
+        function getObesity(standardWeight) {
+            let obesity = v_weight.value;
+            obesity = obesity * 100 / standardWeight;
+            obesity = Math.round(obesity * 100) / 100;
+            if (obesity < 90) {
+                return "저체중";
+            } else if (90 <= obesity && obesity < 100) {
+                return "정상체중";
+            } else if (110 <= obesity && obesity < 120) {
+                return "과체중";
+            } else if (120 <= obesity && obesity < 130) {
+                return "경도비만";
+            } else if (130 <= obesity && obesity < 160) {
+                return "중정도 비만";
+            } else if (160 <= obesity) {
+                return "고도 비만";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 400px;
+            border: 1px solid black;
+            margin: auto;
+        }
+
+
+        .feed {
+            height: 300px;
+            border-radius: 30px;
+            box-shadow: 0px 0px 8px 0px gainsboro;
+            margin: 10px;
+        }
+
+        .feed>div:nth-child(1) {
+            height: 80%;
+            text-align: center;
+        }
+
+        .feed>div:nth-child(2) {
+            height: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="feed">
+
+            <div>
+                <img height="100%" src="../resources/images/2.jpeg" alt="">
+            </div>
+            <div>
+                <h2>시고르자브종 한 컷~</h2>
+            </div>
+
+        </div>
+
+
+        <div class="feed">
+
+            <div>
+                <img height="100%" src="../resources/images/2.jpeg" alt="">
+            </div>
+            <div>
+                <h2>시고르자브종 한 컷~</h2>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script>
+        const v_continer = document.getElementsByClassName("container")[0];
+
+
+        //feed 요소를 문자열로 생성해서 컨테이너에 5개 추가
+
+
+     let v_str = "<div class='feed'><div><img height='100%'  src='../resources/images/2.jpeg' alt=''></div><div><h2>시고르자브종 한 컷~</h2></div></div >";
+
+
+
+        for(let i = 0; i<5; i++){
+           v_continer.innerHTML +=v_str;
+       }
+
+
+
+        //createElement로 5개 생성
+
+
+
+        let v_div = document.createElement("div");
+        v_div.classList.add("feed");
+       
+        let v_top =document.createElement("div");
+
+        let v_img = document.createElement("img");
+        v_img.height= 100
+        v_img.src ="../resources/images/2.jpeg";
+
+        v_top.appendChild(v_img);
+        v_div.appendChild(v_top);
+
+        let v_bottom = document.createElement("div");
+        let v_h2 = document.createElement("h2");
+        v_h2.innerHtml = "시골잡종";
+
+    
+        v_bottom.appendChild(v_img);
+        v_h2.appendChild(v_top);
+
+        //스크롤바를 끝까지 내리면 
+    if(v_scrollheight = v_clientheight + v_scrollheight){
+        for(let ){
+            v_container.innerHTML +=v_str;
+        }
+    }
+}
+//새로 고침 시 스크롤이 맨 위로 올라기길 바란다면
+//페이지를 떠나기 전 스크롤을 맨 위로 올려서
+//스크롤의 위치 기록을 맨 위로 바꿔버리기
+window.addEventListener("unload", function(){
+window.scrollto(0,0);
+});
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

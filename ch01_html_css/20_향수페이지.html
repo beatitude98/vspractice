@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 향수블로그 </title>
+
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+
+        .container {
+
+            width: 1200px;
+            background-color: black;
+            margin: auto;
+        }
+
+        
+
+        .first3 {
+            margin-left: 10px;
+            border-radius: 25px;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .first{
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+        }
+
+        .first a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .second {
+
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .textdetail{
+            color: white;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            margin-right: 150px;
+        }
+
+        .bottom {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20%;
+        }
+
+        .cell{
+            background-color: white;
+            
+        }
+
+        .item-box a {
+            text-decoration: none;
+        }
+
+        .item-box {
+            text-decoration: none;
+            cursor: pointer;
+            margin: auto;
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: white;
+            
+        }
+
+        .item-box>div {
+            width: calc(1000px / 3 - 20px);
+            height: 400px;
+            border: 0;
+            box-shadow: 1px 1px 4px 1px black;
+            border-bottom: 20px;
+            overflow: hidden;
+            margin: 10px;
+
+        }
+
+        .top {
+            height: 80%;
+        }
+
+        .title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            background-color: black;
+            color: white;
+        }
+
+        .last{
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: end;
+            padding: 20px;
+            justify-content: space-between;            
+        }
+
+        .map{
+            margin: 100px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+
+        <div class="first">
+            <img width="50px" height="50px"
+                src="data:image/png;base64,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"
+                alt="">
+            <a href=""> CREED</a>
+            <a href=""> </a>
+            <a href=""> </a>
+            <a href=""> </a>
+            <a href=""> </a>
+            <a href="https://blog.naver.com/beatitude98"> 향수 블로그</a>
+            <a href=""> 향수에 관하여</a>
+            <a href=""> 브랜드 향수 리뷰</a>
+            <a href=""> </a>
+            <a href=""> </a>
+            <a href=""> </a>
+
+            <div class="first3">
+                <a href=""> 로그인/회원가입</a>
+            </div>
+
+            <a href=""> </a>
+        </div>
+
+
+
+        <div class="second">
+            <div>
+                <img width="400px" height="230px"
+                    src="https://postfiles.pstatic.net/MjAyMzA0MTdfOTUg/MDAxNjgxNzMyNTc1MzMy.ihDtgJSViNXkljXADXScu8naL0skKkh6jzvob6tpeHog.Ocsq4wGzNXIiIhuE7m0R4QFSDl-Vm2rH4Mr4eUm3-jcg.JPEG.beatitude98/IMG_6159.jpg?type=f238"
+                    alt="">
+            </div>
+
+            <div class="textdetail">
+                
+                <div>
+                    <h2> 크리드 어벤투스 for her 출시 </h2>
+                </div>
+
+                <div>
+                <p> 크리드 어벤투스 for her 유래</p>
+                <p> 크리드 어벤투스 for her 판매 매장</p>
+                <p> 크리드 어벤투스 for her 가격</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title">
+            <h1>
+                About Niche Perfumes
+            </h1>
+        </div>
+
+        <div class="item-box">
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px"
+                        src="https://postfiles.pstatic.net/MjAyMzA0MDlfMjUx/MDAxNjgwOTc4MTYyMTIy.h9qy34CoCP98L5nsHW4S5bjTvO3mYCdIkXGLJCTE8jAg.Np0PSd4mUIULzHjc0o6dToflxAILZUr0ul5cPKVYiAcg.JPEG.beatitude98/IMG_6051.jpg?type=f238"
+                        alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://blog.naver.com/beatitude98/223068896399"> 크리드 버진아일랜드 워터</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="top">
+                    <img height="320px" width="328px"
+                        src="https://postfiles.pstatic.net/MjAyMzA1MjhfMjkz/MDAxNjg1Mjc2Mzk5NTM1.b0utxejPtHTgqzQlRc3baXZlbzAqRQrl_8HWE6iPRQIg.EhuKu9HyVWuEJpvz2ZvNbVcaYHOmHEWxYTYXwDrC6T0g.JPEG.beatitude98/IMG_6626.jpg?type=f238"
+                        alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://blog.naver.com/beatitude98/223114084518"> 르라보 바닐 </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="top">
+                    <img height="320px" width="328px"
+                        src="https://postfiles.pstatic.net/MjAyMzA1MjhfMTgg/MDAxNjg1MjcyNjI5OTQ4.LoX5Ipma4c6X-HjngaDAhUzD1re6EBdyJszrWI7H-zsg.er0TjajpUyPcikj1Twl9aaeSJwXlZ9yx3pqaTYmuBi8g.JPEG.beatitude98/IMG_7012.jpg?type=f238"
+                        alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://blog.naver.com/beatitude98/223115897545"> 크리드 오리지널 베티버 </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="top">
+                    <img height="320px" width="328px"
+                        src="https://postfiles.pstatic.net/MjAyMzA3MThfODIg/MDAxNjg5NjY2NjU4MTgy.KWb5nxrNE6Y1VhxfbLAYxIqd1ZLOIFhakfukjXuOZO4g.pLLGvIMFnqbvR6WOjAW7uKcxjhc-Z2c1jSog46gR4FEg.JPEG.beatitude98/IMG_6590.jpg?type=f238"
+                        alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://blog.naver.com/beatitude98/223166138999"> 크리드 실버 마운틴 워터 </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="top">
+                    <img height="320px" width="328px"
+                        src="https://postfiles.pstatic.net/MjAyMzA3MThfMjQy/MDAxNjg5NjkxOTA3OTg1.F33PfQvmamcoBV9yu4iNrCJl0WbJXeWrkGH0GdBBTmgg.uZ0KPR_FfA4HRe_qtNZjQhqSbaYGcw6PXp5adqqLocYg.JPEG.beatitude98/IMG_6592.jpg?type=f238"
+                        alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://blog.naver.com/beatitude98/223160032631"> 크리드 오우드 </a>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="top">
+                    <img height="320px" width="328px"
+                        src="https://postfiles.pstatic.net/MjAyMzA3MThfMjYw/MDAxNjg5NjY2NTczNzgx.fJdvbNloNFjkq_Nfd797AG3p-HmSho0BPVEMgA3DkaAg.f9DWFpbNP5AVZkavZmqOXbt74E4UV9bxZBUAdASWdx4g.JPEG.beatitude98/IMG_6622.jpg?type=f238"
+                        alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://blog.naver.com/beatitude98/223163457383"> 르라보 가이악 </a>
+                </div>
+            </div>
+
+            
+
+
+        </div>
+
+        <div class="map">
+        <div class="last">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3214.4039495768357!2d127.40526707581674!3d36.32675857238597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356549343eea9def%3A0xbce1e1d49463ebe8!2z64Sl7Iqk7Yq47JWE7J207Yuw6rWQ7Jyh7IS87YSw7ZWZ7JuQ!5e0!3m2!1sko!2skr!4v1691042866520!5m2!1sko!2skr"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div id="daumRoughmapContainer1691043092074" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js%22%3E </script>
+    
+    
+    <script charset=" UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp": "1691043092074",
+            "key": "2fqjz",
+            "mapWidth": "600",
+            "mapHeight": "800"
+        }).render();
+
+    </script>
+            <div>
+                <h1> 크리드 본점
+                    <br>대전 중구 용두동 97-10
+                </h1>
+                <h3> tel : 01055552222 , tel : 01055552222</h3>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

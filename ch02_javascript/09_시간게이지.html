@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간게이지</title>
+
+    <style>
+        #bar {
+            width: 200px;
+            height: 30px;
+            border: 2px solid black;
+        }
+
+        #timer {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+        .container {
+            display: flex;
+        }
+
+        img{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="count"> 30 </div>
+        <div id="bar">
+            <div id="timer"></div>
+        </div>
+        <img onclick="f_reset()" width="30px" height="30px" src="data:image/png;base64,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" alt="">
+    </div>
+
+
+    <script>
+        const v_count = document.getElementById("count");
+        const v_timer = document.getElementById("timer");
+
+
+        function f_reset(){
+            cnt = 30;
+            v_count.innerHTML =cnt;
+            v_timer.style.width = "100%";
+        }
+
+        function f_time() {
+            let cnt = parseInt(v_count.innerHTML);
+
+            cnt--;
+
+            v_count.innerHTML = cnt;
+
+            let ratio = cnt/30 * 100;
+            v_timer.style.width = ratio + "%";
+            
+            if (cnt == 0){
+                return;
+            }
+
+            setTimeout(f_time, 1000);
+
+        }
+
+        setTimeout(f_time, 1000);
+
+
+
+    </script>
+</body>
+
+</html>
