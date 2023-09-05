@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home|D.tam hair</title>
+
+    <!-- https://haumstyle.com/index.html 밴치마킹할 홈페이지 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        div {
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        body {
+            background-color: none;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        .container {
+            width: 1200px;
+            background-color: white;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        .nav-bartop {
+            height: 20px;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+        }
+
+        .nav-barcenter {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-barcenter>div {
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-barbottom {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .nav-barbottom a {
+            text-decoration: none;
+            color: black;
+            margin: 30px;
+        }
+
+        .carousel-item > div > h5,p{
+            color: black;
+        }
+
+
+
+    </style>
+
+</head>
+
+<!-- 예약 페이지 https://dtamhair.modoo.at/?link=w64oc1wd
+디자이너 선택 예약 페이지  https://booking.naver.com/booking/13/bizes/147684?area=ple -->
+
+
+<body>
+    <div class="container">
+
+        <div class="nav-bartop">
+            <div> <a href=""> My Page </a></div>
+            <div> <a href="file:///home/pc32/github/vspractice/ch02_javascript/05_input.html">Login / Sign in</a> </div>
+        </div>
+
+        <!-- barcenter여기엔 검색창이랑 홈페이지 로고 삽입예정 -->
+        <div class="nav-barcenter">
+            <div>
+                <img width="600px" height="100px" src="../leejiyong/resources/images/디탐홈로고제작-removebg-preview.png"
+                    alt="">
+            </div>
+            <div>
+                <input type="search" placeholder="D.tam Hair에 대한 모든 것">
+                <button type="submit">Search</button>
+
+            </div>
+        </div>
+
+        <div class="nav-barbottom">
+            <a href="">홈</a>
+            <a href="">매장안내</a>
+            <a href="">예약안내</a>
+            <a href="">시술사진</a>
+            <a href="">Q&A 게시판</a>
+        </div>
+
+        <div>
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img onclick="f_booking()" src="./resources/images/디탐강남역점.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>디탐헤어 강남역점</h5>
+                            <p>Address: 서울 강남구 테헤란로 1길 17 4층<br>
+                                Subway : 2호선 강남역 11번 출구 하차<br>
+                                                (영풍문고 옆건물) <br>
+                                Tel : 0507-1355-5747</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img onclick="f_booking()" src="./resources/images/디탐신논현점.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>디탐헤어 신논현점</h5>
+                            <p>Address: 서울 서초구 사평대로 56길 8 2층<br>
+                                Subway : 9호선 신논현역 7번 출구 하차<br>
+                                                (논현삼계탕 옆건물) <br> Tel : 0507-1391-5747</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img onclick="f_booking()" src="./resources/images/디탐건대점.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>디탐헤어 건대점</h5>
+                            <p>Address : 서울 광진구 능동로 91 3층<br>
+                                Subway : 2호선 건대역 5번 출구 하차<br>
+                                                (LG유플러스 건물 3층) <br>Tel : 0507-1406-2207</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img onclick="f_booking()" src="./resources/images/디탐성신여대점.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>디탐헤어 성신여대점</h5>
+                            <p>Address : 서울 성북구 동소문로20길 37-23 3층<br>
+                                Subway : 4호선 성신여대입구역 1번 출구 하차 (abc마트 맞은편 건물 3층) <br>Tel : 0507-1492-2206</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function f_booking() {
+            location.href = "selectDesigner(gangnam).html"
+        }
+        
+        
+
+            
+        
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선수능력자</title>
+
+
+
+</head>
+
+<body>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"
+        integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let v_ajax = new XMLHttpRequest();
+
+        v_ajax.open("GET", "./10_player.xml")
+
+        v_ajax.onload = () => {
+            console.log(v_ajax.response); //XML문자열
+
+            let v_x2js = new X2JS();
+            let v_json = v_x2js.xml_str2json(v_ajax.response); // 문자열을 제이슨으로 변환해라 str2json = string to json 표기
+
+            console.log(v_json);
+
+            const ctx = document.getElementById("myChart");
+
+            let v_labels = [];
+            let v_datasets = [];
+
+            let v_players = v_json["xml"]["players"]["player"];
+            console.log(v_players);
+
+            v_labels = Object.keys(v_players[0]["stat"]);
+            console.log(v_labels)
+
+            for(let i = 0; i < v_players.length; i++){
+                let v_temp = {};
+                v_temp["label"] = v_players[i]["name"];
+
+                let v_statArray = [];
+                for(let k = 0; k < v_labels.length; k++){
+                    v_statArray.push(v_players[i]["stat"][v_labels[k]]);
+                }
+
+                v_temp["data"] = v_statArray;
+                v_temp["backgroundColor"] = "transparent";
+                v_temp["pointRadius"] = 0;
+                v_datasets.push(v_temp);
+                
+                /*
+                v_players[i]["stat"]["shooting"]
+                v_players[i]["stat"]["face"]
+                v_players[i]["stat"]["speed"]
+                v_players[i]["stat"]["earth"]
+                v_players[i]["stat"]["pass"]
+                */
+
+            }
+            
+
+            // 두 선수에 대한 능력치 그래프가 그려지도록
+            // v_labels 와 v_datasets완성하기
+
+            new Chart(ctx, {
+                type: "radar",
+                data: {
+                    labels: v_labels, //["속도","지구력","골결정력","외모","패스"],
+                    datasets: v_datasets /*   이걸 대체하는게 v_datasets <= [
+                        {
+                            label: "조규성",
+                            backgroundColor: "transparent",
+                            borderColor: "rgba(0,0,0,0.5)",
+                            pointRadius: 0,
+                            data: [3, 4, 3, 5, 4],
+                        },
+                        {
+                            label: "홀란드",
+                            backgroundColor: "transparent",
+                            borderColor: "rgba(255,0,0,0.5)",
+                            pointRadius: 0,
+                            data: [5, 4, 5, 5, 3],
+                        }
+                    ]*/
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            stepSize: 1.0
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+        }
+
+        v_ajax.send();
+
+
+    </script>
+
+</body>
+
+</html>

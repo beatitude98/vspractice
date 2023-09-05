@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>막대그래프</title>
+</head>
+
+<body>
+    <button onclick="f_click(this)">java</button>
+    <button onclick="f_click(this)">database</button>
+    <button onclick="f_click(this)">JavaScript</button>
+    <div style="width: 600px; height: 400px">
+        <canvas id="myChart"> </canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 05_score.csv파일을 AJAX 통신으로 불러와야 합니다.
+        let v_labels = [];
+        let v_javaData = [];
+        let v_dbData = [];
+        let v_jsData = [];
+
+        let v_ajax = new XMLHttpRequest();
+        v_ajax.open("GET", "http://localhost:5500/ch04_data/05_score.csv");
+
+        v_ajax.onload = () => {
+            console.log(v_ajax.response);
+
+            let v_response = v_ajax.response;
+
+            let v_rows = v_response.split("\n");
+            console.log(v_rows);
+
+            for (let i = 1; i < v_headers.length; i++) {
+                v_score[v_headers[i]] = [];
+            }
+            console.log(v_score);
+
+            for (let i = 1; i < v_rows.length; i++) {
+                let v_cols = v_rows[i].split(",");
+
+                for (let k = 0; k < v_headers.length; k++) {
+                    v_score[v_headers[k]].push(v_cols[k])
+                    // console.log(v_cols[0]);
+                    // v_labels.push(v_cols[0]); // 학생이름
+                    // v_score["name"].push(v_cols[0]);
+                    
+                    // console.log(v_cols[1]);
+                    // v_javaData.push(v_cols[1]); // 자바점수
+                    // v_score["java"].push(v_cols[1]);
+
+                    // console.log(v_cols[2]); // DB점수
+                    // v_dbData.push(v_cols[2])
+                    // v_score["dbData"].push(v_cols[2]);
+
+                    // console.log(v_cols[3]); // JS점수
+                    // v_jsData.push(v_cols[3])
+                    // v_score["jsData"].push(v_cols[3]);
+                }
+                
+                console.log(v_labels);
+                console.log(v_javaData);
+
+                function f_draw(p_subject) {
+                    const ctx = document.getElementById('myChart');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: v_score["name"],
+                            datasets: [{
+                                label: 'java',
+                                data: v_score["java"],
+                                borderWidth: 1,
+                                backgroundColor: 'red'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                }
+
+                v_ajax.send();
+                function f_click(p_this) {
+                    console.log(p_this.innerHTML);
+                }
+                // function f_click(p_this) {
+                //     console.log(p_this.innerHTML);
+                // }
+
+                
+                
+            }
+
+
+
+
+    </script>
+    </body>
+
+</html>

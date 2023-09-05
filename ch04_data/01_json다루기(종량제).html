@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <!-- 공공데이터 포털 종량제 검색-->
     <!-- https://www.data.go.kr/data/15025538/standard.do -->
     <style>
-        .container{
+        .container {
             width: 800px;
             height: 600px;
             margin: auto;
@@ -16,16 +17,22 @@
 
             overflow-y: scroll;
         }
-
     </style>
-    
-    </head>
+
+</head>
+
 <body>
 
     <div class="container">
         <div>
+            <select name="" id="selectLiter">
+                <option value="5ℓ가격">5ℓ가격</option>
+                <option value="10ℓ가격" selected>10ℓ가격</option>
+                <option value="20ℓ가격">20ℓ가격</option>
+            </select>
             <input id="inputRegion" type="text">
             <button onclick="f_search()">검색</button>
+            <button id="btnSort" onclick="f_sort()">정렬</button>
         </div>
         <div id="content"></div>
 
@@ -56,15 +63,15 @@
 
         let v_seoul = [];
 
-        for(let i = 0; i < v_records.length; i++){
-            if(v_records[i]["시도명"].indexOf("서울") != -1
-            && v_records[i]["종량제봉투사용대상"]=="가정용"
-            && v_records[i]["종량제봉투용도"]=="생활쓰레기"
-            && v_records[i]["종량제봉투종류"]=="규격봉투"
-            && v_records[i]["종량제봉투처리방식"]=="소각용"){
+        for (let i = 0; i < v_records.length; i++) {
+            if (v_records[i]["시도명"].indexOf("서울") != -1
+                && v_records[i]["종량제봉투사용대상"] == "가정용"
+                && v_records[i]["종량제봉투용도"] == "생활쓰레기"
+                && v_records[i]["종량제봉투종류"] == "규격봉투"
+                && v_records[i]["종량제봉투처리방식"] == "소각용") {
 
                 v_seoul.push(v_records[i]);
-            
+
             }
         }
 
@@ -74,12 +81,12 @@
         // 10리터 봉투 가격이 가장 비싼 구를 찾아서 출력
         // 10ℓ가격 : "250"
         let v_max = v_seoul[0];
-        for(let i = 0; i < v_seoul.length; i++){
-            if(v_max["10ℓ가격"] < v_seoul[i]["10ℓ가격"]){
+        for (let i = 0; i < v_seoul.length; i++) {
+            if (v_max["10ℓ가격"] < v_seoul[i]["10ℓ가격"]) {
                 v_max = v_seoul[i];
             }
         }
-        
+
 
         //380원인 은평구가 잡힘
         console.log(v_max);
@@ -87,60 +94,145 @@
         // 380원인 구역이 은평구 뿐인가?
         // v_seoul에서 10리터 가격이 380원인 구역들을 수집
         let v_maxRegions = [];
-        for(let i = 0; i < v_seoul.length; i++){
+        for (let i = 0; i < v_seoul.length; i++) {
             // === 등호 3개인 경우는 타입과 값 모두 일치해야 true를 리턴
             // 더 범위를 좁게(타이트하게) 검사할때 등호 3개
-            if(v_seoul[i]["10ℓ가격"] == 380){
+            if (v_seoul[i]["10ℓ가격"] == 380) {
                 // 380 대신 v_max["10ℓ가격"]을 대입해도 된다. 결국 똑같은 값 v_max["10ℓ가격"]이게 380이 나왔었음
                 v_maxRegions.push(v_seoul[i]);
+            }
         }
-    }
-    console.log(v_maxRegions);
+        console.log(v_maxRegions);
 
-    // 서울 지역 데이터 중 v_seoul
-    // 10리터 종량제 봉투 가격의 평균은?
+        // 서울 지역 데이터 중 v_seoul
+        // 10리터 종량제 봉투 가격의 평균은?
 
-    let v_sum = 0;
-    for(let i = 0; i < v_seoul.length; i++){
+        let v_sum = 0;
+        for (let i = 0; i < v_seoul.length; i++) {
             v_sum += parseInt(v_seoul[i]["10ℓ가격"])
             // v_seoul[i] 가지고온 가격들. v_sum += 총합을 구하는 코드 
             // v_seoul.length 갯수를 세는 코드, v_sum / v_seoul.length나누는 코드가 필요함
-    }
-    let v_avg = v_sum / v_seoul.length
-    console.log(v_avg);
+        }
+        let v_avg = v_sum / v_seoul.length
+        console.log(v_avg);
 
-    //데이터를 화면에 뿌리기
-    const v_content = document.querySelector("#content");
-
+        //데이터를 화면에 뿌리기
+        const v_content = document.querySelector("#content");
+        
         for (let i = 0; i < v_records.length; i++) {
             if (v_records[i]["종량제봉투사용대상"] == "가정용"
-                && v_records[i]["종량제봉투용도"] == "생활쓰레기"
-                && v_records[i]["종량제봉투종류"] == "규격봉투"
-                && v_records[i]["종량제봉투처리방식"] == "소각용") {
-
+            && v_records[i]["종량제봉투용도"] == "생활쓰레기"
+            && v_records[i]["종량제봉투종류"] == "규격봉투"
+            && v_records[i]["종량제봉투처리방식"] == "소각용") {
+                
                 let v_str = "<h3>" + v_records[i]["시도명"];
                 v_str += " | " + v_records[i]["시군구명"];
-                v_str += " | " + v_records[i]["10ℓ가격"];
+                v_str += " | " + v_records[i]["10ℓ가격"] + "</h3>";
 
                 v_content.innerHTML += v_str;
-
             }
         }
-    
-        // <div>
-        //     <input id="inputRegion" type="text">
-        //     <button onclick="f_search()">검색</button>
-        // </div>
+        
+        
+        
+        const v_input = document.querySelector("#inputRegion");
+        const v_liter = document.querySelector("#selectLiter");
+        const v_btnSort = document.querySelector("#btnSort");
+        
+        function f_search() {
+            v_content.innerHTML = ""; //초기화 - 기존 내용 지우기 
+            
 
-    const  
+            for (let i = 0; i < v_records.length; i++) { //검색어를 포함하는 데이터를 그리기
+                if (v_records[i]["시도명"].indexOf(v_input.value) != -1
+                    && v_records[i]["종량제봉투사용대상"] == "가정용"
+                    && v_records[i]["종량제봉투용도"] == "생활쓰레기"
+                    && v_records[i]["종량제봉투종류"] == "규격봉투"
+                    && v_records[i]["종량제봉투처리방식"] == "소각용") {
+                        
 
-        function f_search(){
-            for(let i = 0; i < .length; i++){
-                if( )
+                    let v_str = "<h3>" + v_records[i]["시도명"];
+                    v_str += "|" + v_records[i]["시군구명"];
+                    v_str += "|" + v_liter.value + ": " + v_records[i][v_liter.value] + "</h3>";
+                    
+
+                    v_content.innerHTML += v_str;
+                }
             }
+        }
+
+        f_search();
+
+        
+        // isDirection = false면 내림차순
+        // isDirection = true면 오름차순
+
+        v_content.innerHTML = "";
+
+        let isDirection = false;
+        let v_array = [];
+        function f_sort(){
+            // 조건에 맞는 데이터를 배열에 담은 후
+            // 배열을 정렬 시킨 후 화면에 그리기
+            
+            for (let i = 0; i < v_records.length; i++)
+            if (v_records[i]["종량제봉투사용대상"] == "가정용"
+                    && v_records[i]["종량제봉투용도"] == "생활쓰레기"
+                    && v_records[i]["종량제봉투종류"] == "규격봉투"
+                    && v_records[i]["종량제봉투처리방식"] == "소각용"
+                    && v_records[i]["시도명"].indexOf(v_input.value) != -1) {
+
+                        v_array.push(v_records[i]);
 
         }
+    }
+
+
+    //배열 정렬
+    // [ {}, {}, {}, {}, ...]
+    //function(a, b)에서 a와 b는 배열 내 요소(객체)
+    // 왼쪽과 오른쪽을 의미
+
+    if(isDirection){
+        //오름차순
+        v_btnSort.innerHTML = "정렬 ▲"
+        v_array.sort(function(a, b){
+            //왼쪽과 오른쪽 값의 차이를 리턴해주면
+            // 값의 차이가 양수 또는 음수이므로
+            // 이에 맞춰서 정렬이 발생한다.
+            // v_liter.value = 10리터 가격
+            return a["v_liter.value"] - b["v_liter.value"]
+        });
+        // isDirection = false;
+        isDirection = !isDirection;
+    }else{
+        v_btnSort.innerHTML = "정렬 ▼"
+        //내림차순
+        v_array.sort(function(a, b){
+            //왼쪽과 오른쪽 값의 차이를 리턴해주면
+            // 값의 차이가 양수 또는 음수이므로
+            // 이에 맞춰서 정렬이 발생한다.
+            // v_liter.value = 10리터 가격
+            return b["v_liter.value"] - a["v_liter.value"]
+        });
+        // isDirection = true;
+        isDirection = !isDirection;
+    }
+
+
+    //화면에 그리기
+    for (let i = 0; i < v_array.length; i++){
+        v_content.innerHTML = "";
+        let v_str = "<h3>" + v_array[i]["시도명"];
+            v_str += "|" + v_array[i]["시군구명"];
+            v_str += "|" + v_liter.value + ": " + v_array[i][v_liter.value] + "</h3>";
+                    
+        v_content.innerHTML += v_str;
+
+    }
+
 
     </script>
 </body>
+
 </html>
