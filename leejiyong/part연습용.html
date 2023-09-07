@@ -15,31 +15,91 @@
 
 <body>
 
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./resources/images/디탐헤어로고-removebg-preview.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./resources/images/디탐홈로고제작-removebg-preview.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./resources/images/디탐로고2-removebg-preview.png" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+
+    <button class="button" type="button">현재 날씨는?</button>
+
+    <dl>
+        <img class="icon">
+        <dt>기온</dt>
+        <dd class="temperature"></dd>
+        <dt>위치</dt>
+        <dd class="place"></dd>
+        <dt>설명</dt>
+        <dd class="description"></dd>
+    </dl>
+    <script src="weather.js"></script>
 
 
+
+
+    <!-- <script src="weather.js"> -->
     <script>
-        
+        const API_KEY = '3f3a838a05d1ff02052cd83c08270edb';
+        const button = document.querySelector('.button');
+        const success = (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const getWeather = (lat, lon) => {
+                fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}& units=metric & lang=kr`
+                )
+            }
+
+            getWeather(latitude, longitude);
+        };
+        const getWeather = (lat, lon) => {
+            fetch(
+                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
+            )
+                .then((response) => {
+                    return response.json();
+                })
+        }
+        const getWeather = (lat, lon) => {
+
+    .then((json) => {
+            console.log(json);
+        })
+}
+        const getWeather = (lat, lon) => {
+
+   .catch ((error) => {
+            alert(error);
+        });
+}
+        const tempSection = document.querySelector('.temperature');
+        const placeSection = document.querySelector('.place');
+        const descSection = document.querySelector('.description');
+        const getWeather = (lat, lon) => {
+
+    .then((json) => {
+            const temperature = json.main.temp;
+            const place = json.name;
+            const description = json.weather[0].description;
+
+            tempSection.innerText = temperature;
+            placeSection.innerText = place;
+            descSection.innerText = description;
+        })
+
+};
+
+        const getWeather = (lat, lon) => {
+
+    .then((json) => {
+            const icon = json.weather[0].icon;
+            const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+            iconSection.setAttribute('src', iconURL);
+        })
+
+};
+
+        button.addEventListener('click', () => {
+            console.log(button);
+        });
+
+
     </script>
 </body>
 
