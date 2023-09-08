@@ -83,7 +83,7 @@
             </table>
         </div>
         <div class="loginButton">
-            <button onclick="login()" type="button" class="btn btn-outline-success">로그인</button>
+            <button onclick="f_login()" type="button" class="btn btn-outline-success">로그인</button>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -100,6 +100,28 @@
             const v_date = document.getElementById("inputDate");
             const v_color = document.getElementById("inputColor");
             const v_result = document.getElementById("result");
+
+            function f_login() {
+            const v_id = document.getElementById("inputId").value;
+            const v_pw = document.getElementById("inputPw").value;
+
+            const userData = JSON.parse(localStorage.getItem(v_id));
+
+            if (userData && userData[0].PW === v_pw) {
+                sessionStorage.setItem("loginId", v_id.value);
+                location.href = "Dtam(member).html";
+                
+                // 로그인한 사람의 아이디를 
+                // 세션 스토리지에 저장
+                sessionStorage.setItem("loginId", v_id);
+                location.href = "Dtam(member).html";
+            } else {
+                alert("아이디 또는 비밀번호가 잘못되었습니다.");
+            }
+            console.log(v_id.value);
+            console.log(v_pw.value);
+            }
+
 
             function f_regist() {
                 console.log(v_id.value);
@@ -182,6 +204,7 @@
                     return "기타"
                 }
             }
+
 
         </script>
     </body>

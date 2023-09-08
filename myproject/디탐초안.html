@@ -157,11 +157,11 @@
         </div>
 
         <div class="nav-barbottom">
-            <button onclick="f_home()" type="button" class="btn btn-outline-primary">홈</button>
-            <button onclick="" type="button" class="btn btn-outline-primary">매장안내</button>
-            <button onclick="" type="button" class="btn btn-outline-primary">예약안내</button>
-            <button onclick="" type="button" class="btn btn-outline-primary">시술사진</button>
-            <button onclick="" type="button" class="btn btn-outline-primary">Q&A 게시판</button>
+            <a href="file:///home/pc32/github/vspractice/leejiyong/Dtamhair.html">홈</a>
+            <a href="">매장안내</a>
+            <a href="">예약안내</a>
+            <a href="">시술사진</a>
+            <a href="">Q&A 게시판</a>
         </div>
 
         <div>
@@ -438,71 +438,63 @@
 
         </div>
 
-        <div id="map" style="width:100%;height:350px;"></div>
-    </div>
 
-    <!-- https://apis.map.kakao.com/web/sample/basicMap/ 카카오 -->
-    <!-- 카카오 맵 https://developers.kakao.com/console/app/966882 -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=af7d0e13abab0540289a4c1668b772b4"></script>
+        <script>
+            const v_id = document.getElementById("inputId");
+            const v_pw = document.getElementById("inputPw");
+            function f_login() {
+                console.log(v_id.value);
+                console.log(v_pw.value);
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+                sessionStorage.setItem("loginId", v_id.value);
+                location.href = "Dtamhair.html"
+            }
 
-    <script>
+            function f_booking() {
+                location.href = "selectDesigner(gangnam).html"
+            }
 
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(37.49797966003842, 127.02760725974215), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
+            function f_home() {
+                location.href = "Dtamhair.html"
+            }
 
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
+            function f_login() {
+                location.href = "Login.html"
+            }
 
+            function f_signup() {
+                location.href = "signUp.html"
+            }
 
-        const v_id = document.getElementById("inputId");
-        const v_pw = document.getElementById("inputPw");
-        function f_login() {
-            console.log(v_id.value);
-            console.log(v_pw.value);
-
-            sessionStorage.setItem("loginId", v_id.value);
-            location.href = "Dtamhair.html"
-        }
-
-        function f_booking() {
-            location.href = "selectDesigner(gangnam).html"
-        }
-
-        function f_home() {
-            location.href = "Dtamhair.html"
-        }
-
-        function f_login() {
-            location.href = "Login.html"
-        }
-
-        function f_signup() {
-            location.href = "signUp.html"
-        }
-
-        const v_modal2 = document.getElementsByClassName("modal2")[0];
-
-        function f_close1() {
-            v_modal.classList.add("d-none");
-        }
-
-        function f_summon() {
-            v_modal2.classList.remove("d-none2");
-        }
-
-        function f_close2() {
-            v_modal2.classList.add("d-none2");
-        }
+            const v_modal2 = document.getElementsByClassName("modal2")[0];
 
 
-    </script>
+
+
+            function f_close1() {
+                v_modal.classList.add("d-none");
+            }
+
+
+            function f_summon() {
+                v_modal2.classList.remove("d-none2");
+            }
+
+            function f_close2() {
+                v_modal2.classList.add("d-none2");
+            }
+
+
+
+
+
+
+
+        </script>
 
 
 </body>
