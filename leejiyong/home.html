@@ -161,7 +161,7 @@
             <button onclick="" type="button" class="btn btn-outline-primary">매장안내</button>
             <button onclick="" type="button" class="btn btn-outline-primary">예약안내</button>
             <button onclick="" type="button" class="btn btn-outline-primary">시술사진</button>
-            <button onclick="" type="button" class="btn btn-outline-primary">Q&A 게시판</button>
+            <button onclick="f_qa()" type="button" class="btn btn-outline-primary">Q&A 게시판</button>
         </div>
 
         <div>
@@ -437,7 +437,7 @@
             </div>
 
         </div>
-
+        <div id="daumRoughmapContainer1694391164784" class="root_daum_roughmap root_daum_roughmap_landing"></div>
         <div id="map" style="width:100%;height:350px;"></div>
     </div>
 
@@ -446,9 +446,20 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=af7d0e13abab0540289a4c1668b772b4"></script>
 
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+
+        <script charset="UTF-8">
+            new daum.roughmap.Lander({
+                "timestamp" : "1694391164784",
+                "key" : "2g5qd",
+                "mapWidth" : "640",
+                "mapHeight" : "360"
+            }).render();
+        </script>
 
     <script>
 
@@ -458,7 +469,7 @@
                 level: 3 // 지도의 확대 레벨
             };
 
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        var map = new kakao.maps.Map(mapContainer, mapOption);
 
 
         const v_id = document.getElementById("inputId");
@@ -468,7 +479,7 @@
             console.log(v_pw.value);
 
             sessionStorage.setItem("loginId", v_id.value);
-            location.href = "Dtamhair.html"
+            location.href = "home.html"
         }
 
         function f_booking() {
@@ -476,7 +487,7 @@
         }
 
         function f_home() {
-            location.href = "Dtamhair.html"
+            location.href = "home.html"
         }
 
         function f_login() {
@@ -485,6 +496,10 @@
 
         function f_signup() {
             location.href = "signUp.html"
+        }
+
+        function f_qa() {
+            location.href = "q&a게시판목록.html"
         }
 
         const v_modal2 = document.getElementsByClassName("modal2")[0];
@@ -500,6 +515,8 @@
         function f_close2() {
             v_modal2.classList.add("d-none2");
         }
+
+        
 
 
     </script>
