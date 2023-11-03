@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 화면구현 </title>
+
+    <style>
+        div {
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        body {
+            background-color: black;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        .container {
+            width: 1200px;
+            background-color: black;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        .nav-bar {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-bar>div:nth-child(1) {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: white;
+            margin: 10px;
+        }
+
+        .nav-bar>div:nth-child(2) {
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+
+        .nav-bar>div:nth-child(3) {
+
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .nav-bar>div:nth-child(3):hover {
+            filter: brightness(95%);
+        }
+
+        .cell {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        .item-box a {
+            text-decoration: none;
+        }
+
+        .item-box {
+            text-decoration: none;
+            cursor: pointer;
+            margin: auto;
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: black;
+            border-radius: 20px;
+        }
+
+        .item-box>div {
+            width: calc(1000px / 3 - 20px);
+            height: 400px;
+            border: 0;
+            box-shadow: 1px 1px 4px 1px black;
+            border-bottom: 20px;
+            overflow: hidden;
+            margin: 10px;
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            background-color: black;
+            border: 1px solid white;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            color: white;
+        }
+
+        .bottom a {
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .title {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title>div:nth-child(1) {
+            text-decoration: none;
+            border: 2px solid white;
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .title>div:nth-child(2) {
+            border: 2px solid white;
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+
+        .title a {
+            text-decoration: none;
+            border: 2px solid white;
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .title>div:nth-child(3) {
+            border: 2px solid white;
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .title>div:nth-child(3):hover {
+            filter: brightness(95%);
+        }
+
+        .top {
+            height: 80%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+        }
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+        .header {
+            display: flex;
+            height: 400px;
+
+        }
+
+        .header-sub {
+            display: flex;
+            height: 400px;
+            background-image: url("https://creedboutique.com/cdn/shop/files/1800x604_0f9df6c0-5179-4fd7-b6ff-5d3595fe00f0_1600x.jpg?v=1676469704");
+            background-size: cover;
+        }
+
+        .header-sub>div:nth-child(1) {
+            width: 25%;
+        }
+
+        .header-sub>div:nth-child(2) {
+            width: 25%;
+        }
+
+        .header-sub>div:nth-child(3) {
+            width: 25%;
+        }
+
+        .header-sub>div:nth-child(4) {
+            width: 25%;
+            border: 2px solid white;
+            color: white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 20px;
+
+        }
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+        .header>div:nth-child(1) {
+            width: 8%;
+        }
+
+        .header>div:nth-child(2) {
+            width: 84%;
+        }
+
+        .header>div:nth-child(3) {
+            width: 8%;
+        }
+
+        .sub-side {
+            width: 93px;
+            height: calc(100%/3 - 1px);
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            margin-bottom: -1px;
+        }
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+        .drawer-nav {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            
+            position: absolute;
+            top: 310px;
+            left: -10px;
+
+            transform: translate(-100%, 0);
+
+            box-shadow: 4px 0px 4px 0px gainsboro;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translate(-100%, 0);
+            }
+
+            100% {
+                transform: translate(2600%, 0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideOut {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+
+        .slide-out {
+            animation: slideOut 1s forwards;
+        }
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+        .last {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: end;
+            padding: 20px;
+
+            justify-content: space-between;
+        }
+
+        .map {
+            margin: 100px;
+        }
+
+        .lastbottom {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin: 100px;
+        }
+        .lastbottom-sub{
+            margin: auto;
+            padding: auto;
+
+        }
+        .mytext{
+            line-height: 30px;
+            text-align: left;
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-bar">
+
+            <div>
+                <img width="50px" height="50px"
+                    src="https://blogpfthumb-phinf.pstatic.net/MjAyMjEwMTZfMTI3/MDAxNjY1OTExMjQzOTEw.UVI-Y_plYDNPSB0xvcf94a312JWd-9G13TGbY5zFLQgg.rB78JXJkmCKSUYARca2qkLUu6NGqdlYCUoIsJ-wmIsAg.PNG.beatitude98/profileImage.png?type=w161"
+                    alt="">
+                    <a href="https://blog.naver.com/beatitude98">yongrance </a>
+            </div>
+
+            <div>
+                <a href="https://blog.naver.com/beatitude98">향수 블로그 </a>
+                <a href=""></a>
+                <a href="https://www.fragrantica.com/">fragrantica.com </a>
+                <a href=""></a>
+                <a href="https://blog.naver.com/beatitude98/223158030965">정품 가품 구별법</a>
+            </div>
+
+            <div> 
+                <a href="file:///home/pc32/github/vspractice/ch02_javascript/05_input.html">Login / Sign in</a> </div>
+        </div>
+        
+        <div class="header">
+
+
+            <div>
+                <div class="drawer-nav" style="border: none; box-shadow: none;">
+                    <div class="align-end" style="border: none; box-shadow: none;">
+                        <img onclick="f_close()" width="40" height="40"
+                            src="../resources/images/총알-removebg-preview.png">
+                    </div>
+                </div>
+
+                <div class="sub-side"> <img style="border-radius: 10px;" width="100%" height="100%" src="../resources/images/history.png" alt=""> </div>
+                <div class="sub-side"> <img style="border-radius: 10px;" width="100%" height="100%" src="../resources/images/making.png" alt=""> </div>
+                <div class="sub-side"> <img style="border-radius: 10px;" width="100%" height="100%" src="../resources/images/plant.png" alt=""> </div>
+            </div>
+
+            <div class="header-sub">
+                <div onclick="f_drawer()">
+
+                </div>
+                <div></div>
+                <div></div>
+                <div>
+                    <h1>A SUMMBER REFRESH</h1>
+                    <h2>Captivating Fragrances from the House of Creed</h2>
+                </div>
+            </div>
+
+            <div>
+                <div class="sub-side"></div>
+                <div class="sub-side"></div>
+                <div class="sub-side"></div>
+            </div>
+
+        </div>
+
+        <div class="title">
+            <div>
+                <a href="https://creedboutique.com/collections/gifts-for-him">For Man</a>
+            </div>
+
+
+            <div>
+                <a href="https://creedboutique.com/products/gift-cards">Gift Cards</a>
+                <a href=""></a>
+                <a href="https://creedboutique.com/collections/atomizers">Travel Kits</a>
+                <a href=""></a>
+                <a href="https://creedboutique.com/collections/home-body">Showel Gels</a>
+            </div>
+
+            <div>
+                <a href="https://creedboutique.com/collections/gifts-for-her">For Woman</a>
+            </div>
+        </div>
+
+        
+
+        <div class="item-box">
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px" src="../resources/images/크리드21.png" alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://creedboutique.com/collections/all-fragrances/products/original-vetiver?variant=31459290284129">CREED ORIGINAL VÉTIVER</a>
+                    <h6>460$</h6>
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px" src="../resources/images/22.png" alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://creedboutique.com/collections/all-fragrances/products/virgin-island-water?variant=32812868272225">CREED VIRGIN ISLAND WATER</a>
+                    <h6>510$</h6>
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px" src="../resources/images/23.png" alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://creedboutique.com/collections/all-fragrances/products/original-santal?variant=31459293003873">CREED ORIGINAL SANTAL</a>
+                    <h6>450$</h6>
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px" src="../resources/images/24.png" alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://creedboutique.com/collections/all-fragrances/products/aventus-for-her?variant=31459321643105">CREED AVENTUS FOR HER</a>
+                    <h6>570$</h6>
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px" src="../resources/images/25.png" alt="">
+                </div>
+                <div class="bottom">
+                    <a href="https://creedboutique.com/collections/all-fragrances/products/spring-flower-new?variant=40659812876385">CREED SPRING FLOWER
+                    </a>
+                    <h6>500$</h6>
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="top">
+                    <img height="320px" width="328px" src="../resources/images/26.png" alt="">
+                </div>
+                <div class="bottom">
+
+                    <a href="https://creedboutique.com/collections/all-fragrances/products/millesime-imperial?variant=31459271999585">CREED MILLÉSIME IMPÉRIAL</a>
+
+                    <h6>470$</h6>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="map">
+            <div class="last">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3212.405863270867!2d127.37932957657908!3d36.375167672371326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654bae32f20155%3A0x53f15d3671ddf236!2z7Iug7IS46rOE67Cx7ZmU7KCQIOuMgOyghOyLoOyEuOqzhOyVhO2KuOyVpOyCrOydtOyWuOyKpA!5e0!3m2!1sko!2skr!4v1692950450272!5m2!1sko!2skr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div style="border:none; box-shadow: none;">
+                        <p class="mytext">
+                            현재 위치에서 가장 가까운 크리드 매장
+                        </p>
+                    </div>
+            </div>
+            
+        </div>
+
+        <div class="lastbottom">
+            
+            <div class="lastbottom-sub">
+                <img style="border-radius: 12px;" width="500px" height="400px"
+                    src="https://creedboutique.com/cdn/shop/files/747x489-NY_1800x.jpg?v=1680806372" alt="">
+            </div>
+            <div class="lastbottom-sub" style="border:none; box-shadow: none;">
+                <p class="mytext">BEVERLY HILLS
+                    9533 Brighton Way
+                    <br>
+                    Beverly Hills, CA 90210
+                    <br>
+                    Hours
+                    <br>
+                    Monday-Saturday 11am to 7pm
+                    <br>
+                    Sunday 12pm to 6pm
+                    <br>
+                    beverlyhills@creedboutique.com
+                    (424) 355-0002
+                </p>
+            </div>
+
+            
+
+        </div>
+
+
+
+
+        <script>
+
+            const v_drawer = document.getElementsByClassName("drawer-nav")[0];
+
+            function f_drawer() {
+                v_drawer.classList.add("slide-in");
+                v_drawer.classList.remove("slide-out");
+            }
+
+            function f_close() {
+                v_drawer.classList.add("slide-out");
+                v_drawer.classList.remove("slide-in");
+            }
+
+            
+
+        </script>
+    </div>
+
+
+</body>
+
+</html>

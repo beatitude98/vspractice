@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plannermaker</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        body {
+            border: 1px solid red;
+        }
+
+        .container {
+            width: 1900px;
+            height: 943px;
+            margin: auto;
+        }
+
+        
+
+        .first {
+            display: flex;
+            height: 943px;
+            background-size: cover;
+        }
+
+        .first>div:nth-child(1) {
+            width: 7%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .first>div:nth-child(1)>div:nth-child(1){ 
+            /* 여행지 설정 버튼 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* 세로 가운데 정렬 */
+        }
+
+        .first>div:nth-child(2) {
+            width: 15%;
+        }
+        .first>div:nth-child(2)>div:nth-child(1){ 
+            /* 검색창 */
+            height: 10%;
+        }
+        .first>div:nth-child(2)>div:nth-child(2){
+            /* 명소 음식 숙소 */
+            height: 20%;
+        }
+        .first>div:nth-child(2)>div:nth-child(3){
+            /* api 끌어온 정보들 선택창 */
+            height: 69.5%;
+        }
+
+        .first>div:nth-child(3) {
+            width: 23%;
+        }
+
+        .first>div:nth-child(4) {
+            width: 55%;
+
+
+        }
+
+        .box {
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+        }
+
+        .edit {
+            height: 40px;
+            width: 70px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+        }
+
+        .selectplace {
+            display: flex;
+            justify-content: center;
+        }
+
+        .selectplace>div {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .selectbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* 가로 가운데 정렬 */
+            align-items: center;
+            /* 세로 가운데 정렬 */
+            
+        }
+
+        .selectbox>div {
+            height: 60px;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+            display: flex;
+            
+            
+        }
+
+        .addedbox{
+            justify-content: center;
+            /* 가로 가운데 정렬 */
+            align-items: center;
+            /* 세로 가운데 정렬 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addedbox>div {
+            height: 60px;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            margin: 50px;
+            border-radius: 17px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="first">
+            <div>
+                <div>
+                    <div class="box">여행지설정</div>
+                    <div class="box">날짜생성</div>
+                    <div class="box">장소선택</div>
+                </div>
+                <div>
+                    <div class="edit">편집</div>
+                    <div class="edit">저장</div>
+                </div>
+            </div>
+
+
+            <div>
+                <div>
+                    <input type="text" placeholder="어디갈까?">
+                    <button>검색</button>
+                </div>
+                <div class="selectplace">
+                    <div>명소</div>
+                    <div>음식</div>
+                    <div>숙소</div>
+                </div>
+
+                <div class="selectbox">
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                </div>
+
+            </div>
+            <div class="addedbox">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
