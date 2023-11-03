@@ -1,0 +1,23 @@
+function selectRange() {
+    const startDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(selectedDates[0].innerText));
+    const endDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(selectedDates[1].innerText));
+
+    if (startDate > endDate) {
+        // 시작 날짜가 종료 날짜보다 나중이면 두 날짜를 교환
+        const temp = startDate;
+        startDate = endDate;
+        endDate = temp;
+    }
+
+    const pElements = document.querySelectorAll('.futureDay.choiceDay'); // 선택된 날짜들을 찾음
+    for (const pElement of pElements) {
+        pElement.classList.remove("choiceDay"); // 기존에 선택한 날짜들의 "choiceDay" 클래스를 제거
+    }
+
+    for (const pElement of pElements) {
+        const dayNumber = parseInt(pElement.innerText);
+        if (dayNumber >= parseInt(selectedDates[0].innerText) && dayNumber <= parseInt(selectedDates[1].innerText)) {
+            pElement.classList.add("choiceDay"); // 새로 선택한 범위의 날짜에 "choiceDay" 클래스 추가
+        }
+    }
+}
