@@ -83,6 +83,7 @@
             font-weight: 600;
             cursor: pointer;
         }
+        
     </style>
 
 </head>
@@ -209,10 +210,11 @@
                 if (dayNumber >= parseInt(selectedDates[0].innerText) && dayNumber <= parseInt(selectedDates[1].innerText)) {
                     pElement.classList.add("choiceDay");
                 }
-            }
+            } 
             console.log(pElements)
 
         }
+        
 
 
         // 이전달 버튼 클릭
@@ -236,6 +238,8 @@
             }
             return value;
         }
+
+        
         
     </script>
 </body>

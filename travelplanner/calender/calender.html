@@ -164,21 +164,28 @@
                 }
                 else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우
                     newDIV.className = "today";
-                    newDIV.onclick = function () { choiceDate(this); }
+                    newDIV.onclick = function () {
+                        console.log(this)
+                        choiceDate(this); }
                 }
                 else {                                      // 미래인 경우
                     newDIV.className = "futureDay";
-                    newDIV.onclick = function () { choiceDate(this); }
+                    newDIV.onclick = function () { 
+                        console.log(this)
+                        choiceDate(this); }
+                    
+                    
                 }
             }
         }
 
         // 날짜 선택
         function choiceDate(newDIV) {
-            if (selectedDates.length === 2) {
-                // 이미 2개의 날짜가 선택되었으면 초기화
-                selectedDates[0].classList.remove("choiceDay");
-                selectedDates[1].classList.remove("choiceDay");
+            if (selectedDates.length >= 2) {
+                for(const selectedDate of selectedDates){
+                    selectedDate.classList.remove("choiceDay");
+                }
+
                 selectedDates = [];
             }
 
@@ -193,8 +200,8 @@
 
         // 두 날짜 사이의 날짜 선택
         function selectRange() {
-            const startDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(selectedDates[0].innerText));
-            const endDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(selectedDates[1].innerText));
+            const startDate = parseInt(selectedDates[0].innerText);
+            const endDate = parseInt(selectedDates[1].innerText);
 
             if (startDate > endDate) {
                 // 시작 날짜가 종료 날짜보다 나중이면 두 날짜를 교환
@@ -206,36 +213,13 @@
             const pElements = document.querySelectorAll('.futureDay');
             for (const pElement of pElements) {
                 const dayNumber = parseInt(pElement.innerText);
-                if (dayNumber >= parseInt(selectedDates[0].innerText) && dayNumber <= parseInt(selectedDates[1].innerText)) {
+                if (dayNumber >= startDate && dayNumber <= endDate) {
                     pElement.classList.add("choiceDay");
+                    selectedDates.push(pElement);
                 }
-            } 
-            console.log(pElements)
+            }
 
         }
-        function selectRange() {
-    const startDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(selectedDates[0].innerText));
-    const endDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(selectedDates[1].innerText));
-
-    if (startDate > endDate) {
-        // 시작 날짜가 종료 날짜보다 나중이면 두 날짜를 교환
-        const temp = startDate;
-        startDate = endDate;
-        endDate = temp;
-    }
-
-    const pElements = document.querySelectorAll('.futureDay.choiceDay'); // 선택된 날짜들을 찾음
-    for (const pElement of pElements) {
-        pElement.classList.remove("choiceDay"); // 기존에 선택한 날짜들의 "choiceDay" 클래스를 제거
-    }
-
-    for (const pElement of pElements) {
-        const dayNumber = parseInt(pElement.innerText);
-        if (dayNumber >= parseInt(selectedDates[0].innerText) && dayNumber <= parseInt(selectedDates[1].innerText)) {
-            pElement.classList.add("choiceDay"); // 새로 선택한 범위의 날짜에 "choiceDay" 클래스 추가
-        }
-    }
-}
 
 
         // 이전달 버튼 클릭
@@ -259,8 +243,6 @@
             }
             return value;
         }
-
-        
         
     </script>
 </body>
