@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plannermaker</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        body {
+            border: 1px solid red;
+        }
+
+        .container {
+            width: 1900px;
+            height: 943px;
+            margin: auto;
+        }
+
+        
+
+        .first {
+            display: flex;
+            height: 943px;
+            background-size: cover;
+        }
+
+        .first>div:nth-child(1) {
+            width: 7%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .first>div:nth-child(1)>div:nth-child(1){ 
+            /* 여행지 설정 버튼 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* 세로 가운데 정렬 */
+        }
+
+        .first>div:nth-child(2) {
+            width: 15%;
+        }
+        .first>div:nth-child(2)>div:nth-child(1){ 
+            /* 검색창 */
+            height: 10%;
+        }
+        /* .first>div:nth-child(2)>div:nth-child(2){ */
+            /* 명소 음식 숙소 */
+            /* height: 20%; */
+        /* } */
+        .first>div:nth-child(2)>div:nth-child(3){
+            /* api 끌어온 정보들 선택창 */
+            height: 69.5%;
+        }
+
+        .first>div:nth-child(3) {
+            width: 23%;
+        }
+
+        .first>div:nth-child(4) {
+            width: 55%;
+        }
+
+        .box {
+            align-items: center;
+            height: 50px;
+            width: 60px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+        }
+
+        .edit {
+            height: 40px;
+            width: 70px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+        }
+
+        .selectplace {
+            display: flex;
+            justify-content: center;
+        }
+
+        .selectplace > div {
+            margin: 20px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .selectbox {
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            /* 가로 가운데 정렬 */
+            align-items: center;
+            /* 세로 가운데 정렬 */
+        }
+
+        .selectbox>div {
+            display: flex;
+            height: 80px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .textbox{
+            height: 100%;
+            width: 100%;
+        }
+        
+        .smallimgbox{
+            height: 50px;
+            width: 50px;
+            padding: 10px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 20px;
+        }
+
+        .selectplace-nav{
+            width:300px;
+            height: 100%;
+            background-color: white;
+
+            position: absolute;
+            height: 943px;
+            left:0;
+
+            transform: translate(-100%, 0);
+            box-shadow: 4px 0px 4px 0px gainsboro;
+        }
+
+        @keyframes slideIn{
+            0%{
+                transform: translate(-100%,0);
+            }
+
+            100%{
+                transform: translate(75%,0);
+            }
+
+        }
+
+        .slide-in{
+            /* 애니메이션 종료 후 종료상태 유지 forwards */
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideOut{
+            /* 0% 100% 대신 from to 넣어줘도 됨 둘이 같음 */
+            0%{
+                transform: translate(0,0);
+            }
+
+            100%{
+                transform: translate(-100%,0);
+            }
+        }
+
+        .slide-out{
+            animation: slideOut 1s forwards;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="first">
+            <div class="besidenav">
+                <div>
+                    <div class="box">전체일정</div>
+                    <div class="box" onclick="f_drawer()">N일차</div>
+                </div>
+                <div>
+                    <div class="edit">수정</div>
+                    <div class="edit">삭제</div>
+                </div>
+            </div>
+
+
+            <div class="selectplace-nav">
+                <div>
+                    갈곳의 장소 이름 
+                </div>
+                <div class="selectplace">
+                    <div>1일차</div>
+                    <div>2일차</div>
+                    <div>N일차</div>
+                </div>
+
+                <div class="selectbox">
+                    <div>
+                        <div class="textbox"></div>
+                        <div class="smallimgbox"></div>
+                    </div>
+                    <div>
+                        <div class="textbox"></div>
+                        <div class="smallimgbox"></div>
+                    </div><div>
+                        <div class="textbox"></div>
+                        <div class="smallimgbox"></div>
+                    </div><div>
+                        <div class="textbox"></div>
+                        <div class="smallimgbox"></div>
+                    </div><div>
+                        <div class="textbox"></div>
+                        <div class="smallimgbox"></div>
+                    </div><div>
+                        <div class="textbox"></div>
+                        <div class="smallimgbox"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const v_drawer = document.getElementsByClassName("selectplace-nav")[0];
+
+        function f_drawer(){
+            v_drawer.classList.add("slide-in");
+            v_drawer.classList.remove("slide-out");
+        }
+        
+    </script>
+</body>
+
+</html>
