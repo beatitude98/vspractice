@@ -1,0 +1,223 @@
+<html lang="ko">
+
+<head>
+    <title>여행 마커~</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        div {
+            border: 1px solid black;
+        }
+
+        body {
+            border: 1px solid red;
+            padding-top: 70px;
+        }
+
+        .container1 {
+            height: 850px;
+        }
+
+        .first {
+            display: flex;
+            height: 850px;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .selectplace-nav {
+            z-index: 4;
+        }
+
+        .besidenav {
+            z-index: 5;
+            background-color: white;
+        }
+
+        .first>div:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .first>div:nth-child(1)>div:nth-child(1) {
+            /* 여행지 설정 버튼 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* 세로 가운데 정렬 */
+        }
+
+        .first>div:nth-child(2) {
+            width: 350px;
+        }
+
+        .first>div:nth-child(2)>div:nth-child(1) {
+            /* 검색창 */
+            height: 10%;
+        }
+
+        /* .first>div:nth-child(2)>div:nth-child(2){ */
+        /* 명소 음식 숙소 */
+        /* height: 20%; */
+        /* } */
+        .first>div:nth-child(2)>div:nth-child(3) {
+            /* api 끌어온 정보들 선택창 */
+            height: 69.5%;
+        }
+
+        .first>div:nth-child(3) {
+            width: 23%;
+        }
+
+        .first>div:nth-child(4) {
+            width: 55%;
+        }
+
+        .box {
+            align-items: center;
+            height: 50px;
+            width: 100px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+        }
+
+        .edit {
+            height: 40px;
+            width: 70px;
+            padding: 10px;
+            text-align: center;
+            margin: 15px;
+            border-radius: 17px;
+        }
+
+        .selectplace {
+            display: flex;
+            justify-content: center;
+        }
+
+        .selectplace>div {
+            height: 100%;
+            width: 100%;
+        }
+
+        .selectbox {
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            /* 가로 가운데 정렬 */
+            align-items: center;
+            /* 세로 가운데 정렬 */
+        }
+
+        .selectbox>div {
+            display: flex;
+            height: 80px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .textbox {
+            height: 100%;
+            width: 100%;
+        }
+
+        .smallimgbox {
+            height: 50px;
+            width: 50px;
+            padding: 10px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 20px;
+        }
+
+        .selectplace-nav {
+            background-color: white;
+
+            position: absolute;
+            height: 850px;
+
+            transform: translate(201px, 0);
+            box-shadow: 4px 0px 4px 0px gainsboro;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translate(-100%, 0);
+            }
+
+            100% {
+                transform: translate(53%, 0);
+            }
+        }
+
+        .slide-in {
+            /* 애니메이션 종료 후 종료상태 유지 forwards */
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideOut {
+
+            /* 0% 100% 대신 from to 넣어줘도 됨 둘이 같음 */
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+
+        .slide-out {
+            animation: slideOut 1s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <div class="first" id="map">
+            <div class="besidenav">
+                <div>
+                    <div class="box">전체일정</div>
+                    <div class="box" onclick="">N일차</div>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body
+                        scrolling</button>
+
+                    <div class="selectplace" id="day"></div>
+                </div>
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Try scrolling the rest of the page to see this option in action.</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="edit" onclick="f_update()">수정</button>
+                    <button class="edit" onclick="f_delete()">삭제</button>
+                </div>
+            </div>
+
+
+            <div class="selectplace-nav">
+
+
+                <div class="selectbox" id="select-box"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
